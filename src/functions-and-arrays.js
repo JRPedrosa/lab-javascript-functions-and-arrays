@@ -249,9 +249,34 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
 
+function greatestProduct(arr) {
+  for (i = 0; i < arr.length; i++) {
+    for (j = 0; j < arr[i].length; j++) {  
+      
+      var prodFinal = 0;
 
+      if (j < (arr[i].length - 3)) {
+      var prodHorizontal = (arr[i][j] * arr[i][j+1] * arr[i][j+2] * arr[i][j+3]);
+      };
+
+      if (i < (arr.length - 3)) {
+      var prodVertical = (arr[i][j] * arr[i+1][j] * arr[i+2][j] * arr[i+3][j]);
+      }
+
+      if (prodHorizontal > prodFinal) {
+        prodFinal = prodHorizontal
+      } else if (prodVertical > prodFinal) {
+        prodFinal = prodVertical
+      } else {
+        break;
+      }
+
+    }
+  }
+
+  return prodFinal;
+}
 
 
 // The following is required to make unit tests work.
